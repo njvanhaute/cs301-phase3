@@ -18,6 +18,11 @@ CREATE TABLE MANAGER
 	CONSTRAINT MAPK PRIMARY KEY(Username, Email)
 );
 
+INSERT INTO MANAGER VALUES('swmaryland', 'swmaryland@uamovie.com', 'g00dboy1');
+INSERT INTO MANAGER VALUES('aamanning', 'aamanning@uamovie.com', 'passw0rd!');
+INSERT INTO MANAGER VALUES('scao', 'scao@uamovie.com', 'moviefuff112');
+INSERT INTO MANAGER VALUES('nvanhaute', 'nvanhaute@uamovie.com', 'sweetn1blets');
+INSERT INTO MANAGER VALUES('amusaev', 'amusaev@uamovie.com', 'b0ssman3');
 
 CREATE TABLE CUSTOMER
 (
@@ -26,6 +31,32 @@ CREATE TABLE CUSTOMER
 	Password_Customer VARCHAR(20) NOT NULL,
 	CONSTRAINT MAPK PRIMARY KEY(Username, Email)
 );
+INSERT INTO CUSTOMER VALUES('mheine', 'mheine@uamovie.com', 'hookem1');
+INSERT INTO CUSTOMER VALUES('amow7', 'mheine@uamovie.com', 'g0dawgs');
+INSERT INTO CUSTOMER VALUES('caro.wells', 'cwells@ua.edu', 'd0thanrulez!');
+INSERT INTO CUSTOMER VALUES('cliffp', 'pricec@ua.edu', 'league0flegends');
+INSERT INTO CUSTOMER VALUES('lukehatfield', 'luke@gt.edu', 'g0bucks');
+INSERT INTO CUSTOMER VALUES('bpierson', 'bradley.p@uga.edu', 'lilyismygf112');
+INSERT INTO CUSTOMER VALUES('nickbell', 'nbell7@tech.com', 'buzzhorns1');
+INSERT INTO CUSTOMER VALUES('skipm', 'skip@maryland.com', 'ele1phant');
+INSERT INTO CUSTOMER VALUES('geralyn.ann', 'geri@maryland.com', 'bensamw1ll');
+INSERT INTO CUSTOMER VALUES('brennen.clifford', 'brendog@bellsouth.net', 'b1llsmafia');
+INSERT INTO CUSTOMER VALUES('austinb', 'blackmon.a@comcast.net', 'crackerBarrell1');
+INSERT INTO CUSTOMER VALUES('carter.shelt', 'cshelton@crimson.com', 'r1ppedboy');
+INSERT INTO CUSTOMER VALUES('imaqtpie', 'qt@pie.org', 'shmolket7');
+INSERT INTO CUSTOMER VALUES('danielmarzec', 'dm7@ibm.com', 'crypt0goon');
+INSERT INTO CUSTOMER VALUES('mike.spisak', 'spisak@ibm.com', 'havynRulez2');
+INSERT INTO CUSTOMER VALUES('jgrant', 'jusgrant@ibm.com', 'secretagentman234');
+INSERT INTO CUSTOMER VALUES('everest.chiu', 'echiu7@illinois.com', 'soccerman7');
+INSERT INTO CUSTOMER VALUES('maguilera', 'meghan@giggles.org', 'br0dyagui');
+INSERT INTO CUSTOMER VALUES('ceaguilera', 'carlos@cobb.com', 'arch1tect');
+INSERT INTO CUSTOMER VALUES('mhuber7', 'megan.h@gt.edu', 'pennsylvan1a8');
+INSERT INTO CUSTOMER VALUES('zzalar', 'zz@buzz.com', 'h0ckey1');
+INSERT INTO CUSTOMER VALUES('hannah.williams', 'hwill@some.edu', 'passw0rds');
+INSERT INTO CUSTOMER VALUES('bgates2', 'bill@windows.com', '0sg00d');
+INSERT INTO CUSTOMER VALUES('steven.jobs', 'stevie@apple.com', 'ip0dnan0');
+INSERT INTO CUSTOMER VALUES('woz.s', 'steven@apple.com', 'ididitreally!');
+INSERT INTO CUSTOMER VALUES('eldrick.woods', 'tiger@woods.com', 'majorchamp17');
 
 CREATE TABLE REVIEW
 (
@@ -37,6 +68,8 @@ CREATE TABLE REVIEW
 	CONSTRAINT REPK PRIMARY KEY (Review_ID),
 	CONSTRAINT REMOFK FOREIGN KEY (Title) REFERENCES MOVIE(Title) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
 
 CREATE TABLE PAYMENT_INFO
 (
