@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS SYSTEM_INFO;
 DROP TABLE IF EXISTS CUSTOMER;
-DROP TABLE IF EXISTS ORDER_ITEM;
+DROP TABLE IF EXISTS ORDER;
 DROP TABLE IF EXISTS REVIEW;
 DROP TABLE IF EXISTS PLAYS_AT;
 DROP TABLE IF EXISTS SHOWTIME;
@@ -127,7 +127,7 @@ INSERT INTO PAYMENT_INFO VALUES(4693856794670298, 736, "Nick Bell", "05/2021", T
 INSERT INTO PAYMENT_INFO VALUES(6011976341234529, 736, "Megan Huber", "10/2026", TRUE, "mhuber7");
 INSERT INTO PAYMENT_INFO VALUES(4949810261349086, 645, "Daniel Marzec", "06/2021", TRUE, "danielmarzec");
 
-CREATE TABLE ORDER_ITEM
+CREATE TABLE ORDER
 (
 	Order_ID LONG INT NOT NULL,
 	Order_Date VARCHAR(20) NOT NULL,
@@ -147,6 +147,48 @@ CREATE TABLE ORDER_ITEM
 	CONSTRAINT ORTHFK FOREIGN KEY (Theater_ID) REFERENCES THEATER(Theater_ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+INSERT INTO ORDER VALUES(001, "10/15/2018", 1, 0, 1, 2, "20:00", "completed", 5286069914906911, "caro.wells", "A Star is Born", 006);
+INSERT INTO ORDER VALUES(002, "11/03/2018", 1, 0, 1, 2, "15:00", "completed", 344699209276199, "caro.wells", "The Nutcracker and the Four Realms", 006);
+INSERT INTO ORDER VALUES(003, "11/05/2018", 0, 1, 1, 2, "13:00", "completed", 4552006971193116, "geralyn.ann", "Bohemian Rhapsody", 001);
+INSERT INTO ORDER VALUES(004, "11/05/2018", 1, 0, 1, 2, "14:30", "completed", 4395562016874277, "mheine", "Creed II", 002);
+INSERT INTO ORDER VALUES(005, "11/06/2018", 0, 1, 1, 2, "11:00", "completed", 4912871342910117, "amow7", "Dr. Seuss’ The Grinch", 003);
+INSERT INTO ORDER VALUES(006, "11/07/2018", 1, 1, 0, 2, "19:00", "completed", 5513025517058497, "cliffp", "Fantastic Beasts: The Crimes of Grindelwald", 002);
+INSERT INTO ORDER VALUES(007, "11/07/2018", 0, 0, 2, 2, "17:30", "completed", 4276656543199739, "imaqtpie", "Instant Family", 004);
+INSERT INTO ORDER VALUES(008, "11/08/2018", 1, 1, 0, 2, "20:00", "completed", 5194413228923793, "imaqtpie", "Widows", 004);
+INSERT INTO ORDER VALUES(009, "11/10/2018", 2, 0, 0, 2, "12:15", "completed", 4681012056488201, "mike.spisak", "Ralph Breaks the Internet", 003);
+INSERT INTO ORDER VALUES(010, "11/11/2018", 0, 2, 0, 2, "11:00", "completed", 5501447884574357, "jgrant", "Robin Hood", 004);
+INSERT INTO ORDER VALUES(011, "11/13/2018", 0, 0, 0, 1, "14:45", "completed", 5363363524515956, "skipm", "The Front Runner", 001);
+INSERT INTO ORDER VALUES(012, "11/14/2018", 1, 0, 0, 1, "13:14", "completed", 4693856794670298, "nickbell", "Beautiful Boy", 003);
+INSERT INTO ORDER VALUES(013, "11/15/2018", 0, 1, 0, 1, "21:15", "completed", 6011976341234529, "mhuber7", "Venom", 004);
+INSERT INTO ORDER VALUES(014, "11/16/2018", 0, 0, 1, 1, "22:00", "completed", 5198686929615612, "austinb", "Smallfoot", 002);
+INSERT INTO ORDER VALUES(015, "11/16/2018", 1, 0, 0, 1, "11:30", "completed", 4547411419334009, "ceaguilera", "Boy Erased", 004);
+INSERT INTO ORDER VALUES(016, "11/20/2018", 0, 1, 0, 1, "12:15", "completed", 4949810261349086, "danielmarzec", "A Star is Born", 004);
+INSERT INTO ORDER VALUES(017, "11/20/2018", 0, 2, 2, 4, "13:45", "completed",  4015618789090697, "carter.shelt", "The Front Runner", 002);
+INSERT INTO ORDER VALUES(018, "11/21/2018", 2, 1, 3, 6, "20:15", "completed", 5194413228923793, "imaqtpie", "Bohemian Rhapsody", 001);
+INSERT INTO ORDER VALUES(019, "11/22/2018", 1, 1, 1, 3, "00:30", "completed", 6011455925362261, "everest.chiu", "Venom", 003);
+INSERT INTO ORDER VALUES(020, "11/22/2018", 0, 0, 0, 1, "12:15", "completed", 4380403607842182, "maguilera", "Smallfoot", 003);
+INSERT INTO ORDER VALUES(041, "11/23/2018", 5, 0, 0, 5, "13:00", "cancelled", 5442748681601927, "Dr. Seuss’ The Grinch", 001);
+INSERT INTO ORDER VALUES(021, "12/16/2018", 0, 2, 0, 2, "13:00", "cancelled", 5198686929615612, "austinb", "Bohemian Rhapsody", 002);
+INSERT INTO ORDER VALUES(022, "12/16/2018", 0, 0, 1, 1, "12:40", "cancelled", 5363363524515956, "skipm", "A Star is Born", 001);
+INSERT INTO ORDER VALUES(023, "12/17/2018", 1, 0, 0, 1, "01:00", "cancelled", 344699209276199, "caro.wells", "Creed II", 006);
+INSERT INTO ORDER VALUES(024, "12/17/2018", 1, 0, 0, 1, "12:00", "cancelled", 5513025517058497, "cliffp", "Beautiful Boy", 002);
+INSERT INTO ORDER VALUES(025, "12/18/2018", 0, 2, 2, 4, "15:15", "cancelled", 4681012056488201, "mike.spisak", "Boy Erased", 004);
+INSERT INTO ORDER VALUES(026, "12/19/2018", 2, 3, 4, 9, "16:03", "cancelled", 6011525138243720, "austinb", "Widows", 002);
+INSERT INTO ORDER VALUES(027, "12/19/2018", 0, 0, 1, 1, "16:15", "cancelled", 5501447884574357, "jgrant", "The Nutcracker and the Four Realms", 003);
+INSERT INTO ORDER VALUES(028, "12/20/2018", 1, 0, 1, 2, "17:40", "cancelled", 5442748681601927, "geralyn.ann", "Venom", 001);
+INSERT INTO ORDER VALUES(029, "12/21/2018", 0, 0, 1, 1, "14:00", "cancelled", 4912871342910117, "amow7", "Smallfoot", 005);
+INSERT INTO ORDER VALUES(030, "12/22/2018", 5, 0, 0, 1, "12:45", "cancelled", 4693856794670298, "nickbell", "Instant Family", 005);
+INSERT INTO ORDER VALUES(031, "12/18/2018", 1, 0, 0, 1, "13:00", "unused", 6011455925362261, "everest.chiu", "Dr. Seuss’ The Grinch", 003);
+INSERT INTO ORDER VALUES(032, "12/18/2018", 1, 0, 1, 2, "14:30", "unused", 344699209276199, "caro.wells", "Bohemian Rhapsody", 006);
+INSERT INTO ORDER VALUES(033, "12/19/2018", 0, 0, 2, 2, "12:45", "unused", 4912871342910117, "amow7", "Boy Erased", 004);
+INSERT INTO ORDER VALUES(034, "12/20/2018", 0, 1, 1, 2, "15:00", "unused", 4395562016874277, "mheine", "Creed II", 001);
+INSERT INTO ORDER VALUES(035, "12/21/2018", 2, 0, 2, 4, "16:20", "unused", 379309212232746, "brennen.clifford", "Fantastic Beasts: The Crimes of Grindelwald", 005);
+INSERT INTO ORDER VALUES(036, "12/24/2018", 0, 0, 1, 1, "09:30", "unused", 4693856794670298, "nickbell", "Creed II", 001);
+INSERT INTO ORDER VALUES(037, "12/24/2018", 0, 1, 1, 2, "10:20", "unused", 5194413228923793, "imaqtpie", "Smallfoot", 003);
+INSERT INTO ORDER VALUES(038, "12/25/2018", 0, 0, 1, 1, "12:00", "unused", 6011660415444301, "ceaguilera", "Widows", 004);
+INSERT INTO ORDER VALUES(039, "12/26/2018", 0, 0, 1, 1, "13:45", "unused", 5363363524515956, "skipm", "Bohemian Rhapsody", 002);
+INSERT INTO ORDER VALUES(040, "12/30/2018", 0, 1, 2, 3, "14:00", "unused", 5198686929615612, "austinb", "Ralph Breaks the Internet", 005);
+
 CREATE TABLE MOVIE
 (
 	Title VARCHAR(100) NOT NULL,
@@ -155,9 +197,25 @@ CREATE TABLE MOVIE
 	Movie_Length	DOUBLE
 	Movie_Genre	VARCHAR(10) NOT NULL,
 	Release_Date VARCHAR(20) NOT NULL,
-	Rating	INT,
+	Rating	VARCHAR(10),
 	CONSTRAINT MOPK PRIMARY KEY (Title)
 );
+
+INSERT INTO MOVIE VALUES("Creed II", "Michael B. Jordan, Sylvester Stallone, Tessa Thompson, Phyliia Rashad, Wood Harris", "Life has become a balancing act for Adonis Creed. Between personal obligations and training for his next big fight, he is up against the challenge of his life. Facing an opponent with ties to his family's past only intensifies his impending battle in the ring. Rocky Balboa is there by his side through it all and, together, Rocky and Adonis will confront their shared legacy, question what's worth fighting for, and discover that nothing's more important than family. Creed II is about going back to basics to rediscover what made you a champion in the first place, and remembering that, no matter where you go, you can't escape your history.", 130, "Drama", "11/21/2018", "PG-13");
+INSERT INTO MOVIE VALUES("Bohemian Rhapsody", "Rami Malek, Gwilym Lee, Ben Hardy, Joe Mazzello, Mike Myers", "Singer Freddie Mercury, guitarist Brian May, drummer Roger Taylor and bass guitarist John Deacon take the music world by storm when they form the rock 'n' roll band Queen in 1970. Surrounded by darker influences, Mercury decides to leave Queen years later to pursue a solo career. Diagnosed with AIDS in the 1980s, the flamboyant frontman reunites with the group for the benefit concert Live Aid -- leading the band in one of the greatest performances in rock history.", 135, "Drama", "11/02/2018", "PG-13");
+INSERT INTO MOVIE VALUES("Dr. Seuss’ The Grinch", "Benedict Cumberbatch, Rashida Jones, Tristan O’Hare, Scarlett Estevez, Cameron Seely", "Academy Award® nominee Benedict Cumberbatch lends his voice to the infamous Grinch, who lives a solitary life inside a cave on Mt. Crumpet with only his loyal dog, Max, for company. With a cave rigged with inventions and contraptions for his day-to-day needs, the Grinch only sees his neighbors in Who-ville when he runs out of food. Each year at Christmas they disrupt his tranquil solitude with their increasingly bigger, brighter and louder celebrations. When the Whos declare they are going to make Christmas three times bigger this year, the Grinch realizes there is only one way for him to gain some peace and quiet: he must steal Christmas. To do so, he decides he will pose as Santa Claus on Christmas Eve, even going so far as to trap a lackadaisical misfit reindeer to pull his sleigh.", 90, "Comedy", "11/09/2018", "PG");
+INSERT INTO MOVIE VALUES("Fantastic Beasts: The Crimes of Grindelwald", "Eddie Redmayne, Johnny Depp, Jude Law, Katherine Waterston, Dan Fogler", "In an effort to thwart Grindelwald's plans of raising pure-blood wizards to rule over all non-magical beings, Albus Dumbledore enlists his former student Newt Scamander, who agrees to help, unaware of the dangers that lie ahead. Lines are drawn as love and loyalty are tested, even among the truest friends and family, in an increasingly divided world.", 134, "Action/Adventure", "11/16/2018", "PG-13");
+INSERT INTO MOVIE VALUES("Instant Family", "Mark Wahlberg, Rose Byrne, Isabela Moner, Octavia Spencer, Margo Martindale", "When Pete and Ellie decide to start a family, they stumble into the world of foster care adoption. They hope to take in one small child, but when they meet three siblings, including a rebellious 15-year-old girl, they find themselves speeding from zero to three kids overnight. Now, Pete and Ellie must try to learn the ropes of instant parenthood in the hope of becoming a family.", 119, "Comedy", "11/16/2018", "PG-13");
+INSERT INTO MOVIE VALUES("Widows", "Viola Davis, Michelle Rodriguez, Liam Neeson, Colin Farrell, Robert Duvall", "‘Widows’ is the story of four women with nothing in common except a debt left behind by their dead husbands' criminal activities. Set in contemporary Chicago, amid a time of turmoil, tensions build when Veronica (Oscar® winner Viola Davis), Linda (Michelle Rodriguez), Alice (Elizabeth Debicki) and Belle (Cynthia Erivo) take their fate into their own hands and conspire to forge a future on their own terms. ‘Widows’ also stars Liam Neeson, Colin Farrell, Robert Duvall, Daniel Kaluuya, Lukas Haas and Brian Tyree Henry.", 128, "Suspense", "11/16/2018", "R");
+INSERT INTO MOVIE VALUES("A Star is Born", "Bradley Cooper, Lady Gaga, Andrew Dice Clay, Dave Chappelle, Sam Elliott", "In this new take on the tragic love story, Bradley Cooper plays seasoned musician Jackson Maine, who discovers—and falls in love with—struggling artist Ally (Gaga). She has just about given up on her dream to make it big as a singer… until Jack coaxes her into the spotlight. But even as Ally’s career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.", 135, "Drama", "10/05/2018", "R");
+INSERT INTO MOVIE VALUES("Ralph Breaks The Internet", "John C. Reilly, Sarah Silverman, Alan Tudyk, Jack McBrayer, Jane Lynch", "Ralph and Vanellope embark on an adventure inside the internet to find a spare part to fix a video game.", 112, "Action/Adventure", "11/21/2018", "PG");
+INSERT INTO MOVIE VALUES("Robin Hood", "Taron Egerton, Eve Hewson, Jamie Foxx, Jamie Dornan, Paul Anderson", "A war-hardened Crusader and his Moorish commander mount an audacious revolt against the corrupt English crown in a thrilling action-adventure packed with gritty battlefield exploits, mind-blowing fight choreography, and a timeless romance.", 116, "Action/Adventure", "11/21/2018", "PG-13");
+INSERT INTO MOVIE VALUES("The Front Runner", "Hugh Jackman, Vera Farmiga, Molly Ephraim, Kaitlyn Dever, Ari Graynor", "Oscar® nominee Hugh Jackman stars as the charismatic politician Gary Hart for Academy Award®-nominated director Jason Reitman in the new thrilling drama The Front Runner. The film follows the rise and fall of Senator Hart, who captured the imagination of young voters and was considered the overwhelming front runner for the 1988 Democratic presidential nomination when his campaign was sidelined by the story of an extramarital relationship with Donna Rice. As tabloid journalism and political journalism merged for the first time, Senator Hart was forced to drop out of the race – events that left a profound and lasting impact on American politics and the world stage.", 113, "Drama", "11/06/2018", "R");
+INSERT INTO MOVIE VALUES("Beautiful Boy", "Steve Carell, Timothee Chalamet, Maura Tierney, Amy Ryan, Christian Convery", "Based on the best-selling pair of memoirs from father and son David and Nic Sheff, Beautiful Boy chronicles the heartbreaking and inspiring experience of survival, relapse, and recovery in a family coping with addiction over many years.", 120, "Drama", "10/12/2018", "R");
+INSERT INTO MOVIE VALUES("Venom", "Tom Hardy, Michelle Williams, Riz Ahmed, Scott Haze, Reid Scott", "Reporter Eddie Brock develops superpowers after becoming a host to an alien parasite.", 112, "Action/Adventure", "10/05/2018", "PG-13");
+INSERT INTO MOVIE VALUES("Smallfoot", "Channing Tatum, Zendaya, James Corden, Common, Lebron James", "A Yeti named Migo stirs up his community when he discovers something that he didn't know existed -- a human.", 96, "Animated", "09/28/2018", "PG");
+INSERT INTO MOVIE VALUES("Boy Erased", "Nicole Kidman, Russell Crowe, Lucas Hedges, Joe Alwyn, Cherry Jones", "‘Boy Erased’ tells the story of Jared (Hedges), the son of a Baptist pastor in a small American town, who is outed to his parents (Kidman and Crowe) at age 19. Jared is faced with an ultimatum: attend a conversion therapy program – or be permanently exiled and shunned by his family, friends, and faith. Boy Erased is the true story of one young man’s struggle to find himself while being forced to question every aspect of his identity.", 115, "Documentary", "11/02/2018", "R");
+INSERT INTO MOVIE VALUES("The Nutcracker and the Four Realms", "Kiera Knightley, Mackenzie Foy, Morgan Freeman, Helem Mirren, Matthew MacFayden", "Young Clara needs a magical, one-of-a-kind key to unlock a box that contains a priceless gift. A golden thread leads her to the coveted key, but it soon disappears into a strange and mysterious parallel world. In that world, she meets a soldier named Phillip, a group of mice and the regents who preside over three realms. Clara and Phillip must now enter a fourth realm to retrieve the key and restore harmony to the unstable land.", 139, "Action/Adventure", "11/02/2018", "PG");
 
 CREATE TABLE PLAYS_AT
 (
@@ -168,6 +226,52 @@ CREATE TABLE PLAYS_AT
 	CONSTRAINT PLMOFK FOREIGN KEY (Title) REFERENCES MOVIE(Title) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT PLTHFK FOREIGN KEY (Theater_ID) REFERENCES THEATER(Theater_ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+INSERT INTO PLAYS_AT VALUES(TRUE, "Creed II", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Creed II", 002);
+INSERT INTO PLAYS_AT VALUES(FALSE, "Creed II", 003);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Creed II", 006);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Bohemian Rhapsody", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Bohemian Rhapsody", 002);
+INSERT INTO PLAYS_AT VALUES(FALSE, "Bohemian Rhapsody", 004);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Bohemian Rhapsody", 006);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Dr. Seuss’ The Grinch", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Dr. Seuss’ The Grinch", 003);
+INSERT INTO PLAYS_AT VALUES(FALSE, "Dr. Seuss’ The Grinch", 006);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Fantastic Beasts: The Crimes of Grindelwald", 002);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Fantastic Beasts: The Crimes of Grindelwald", 005);
+INSERT INTO PLAYS_AT VALUES(FALSE, "Fantastic Beasts: The Crimes of Grindelwald", 006);
+INSERT INTO PLAYS_AT VALUES(FALSE, "Instant Family", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Instant Family", 004);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Instant Family", 005);
+INSERT INTO PLAYS_AT VALUES(FALSE, "Widows", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Widows", 002);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Widows", 004);
+INSERT INTO PLAYS_AT VALUES(TRUE, "A Star is Born", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "A Star is Born", 004);
+INSERT INTO PLAYS_AT VALUES(TRUE, "A Star is Born", 006);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Ralph Breaks the Internet", 002);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Ralph Breaks the Internet", 003);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Ralph Breaks the Internet", 005);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Robin Hood", 004);
+INSERT INTO PLAYS_AT VALUES(TRUE, "The Front Runner", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "The Front Runner", 002);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Beautiful Boy", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Beautiful Boy", 002);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Beautiful Boy", 003);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Venom", 001);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Venom", 003);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Venom", 004);
+INSERT INTO PLAYS_AT VALUES(FALSE, "Venom", 005);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Smallfoot", 002);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Smallfoot", 003);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Smallfoot", 005);
+INSERT INTO PLAYS_AT VALUES(FALSE, "Boy Erased", 002);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Boy Erased", 003);
+INSERT INTO PLAYS_AT VALUES(TRUE, "Boy Erased", 004);
+INSERT INTO PLAYS_AT VALUES(TRUE, "The Nutcracker and the Four Realms", 003);
+INSERT INTO PLAYS_AT VALUES(FALSE, "The Nutcracker and the Four Realms", 005);
+INSERT INTO PLAYS_AT VALUES(TRUE, "The Nutcracker and the Four Realms", 006);
 
 CREATE TABLE SHOWTIME
 (
