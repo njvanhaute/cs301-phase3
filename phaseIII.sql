@@ -31,7 +31,7 @@ CREATE TABLE MOVIE
 	Title VARCHAR(100) NOT NULL,
 	Movie_Cast VARCHAR(255) NOT NULL,
 	Synopsis	VARCHAR(1000) NOT NULL,
-	Movie_Length	INT
+	Movie_Length	INT,
 	Movie_Genre	VARCHAR(10) NOT NULL,
 	Release_Date VARCHAR(20) NOT NULL,
 	Rating	VARCHAR(10),
