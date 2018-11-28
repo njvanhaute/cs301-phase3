@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS SYSTEM_INFO;
 DROP TABLE IF EXISTS CUSTOMER;
-DROP TABLE IF EXISTS ORDER;
+DROP TABLE IF EXISTS ORDER_ITEM;
 DROP TABLE IF EXISTS REVIEW;
 DROP TABLE IF EXISTS PLAYS_AT;
 DROP TABLE IF EXISTS SHOWTIME;
@@ -127,7 +127,7 @@ INSERT INTO PAYMENT_INFO VALUES(4693856794670298, 736, "Nick Bell", "05/2021", T
 INSERT INTO PAYMENT_INFO VALUES(6011976341234529, 736, "Megan Huber", "10/2026", TRUE, "mhuber7");
 INSERT INTO PAYMENT_INFO VALUES(4949810261349086, 645, "Daniel Marzec", "06/2021", TRUE, "danielmarzec");
 
-CREATE TABLE ORDER
+CREATE TABLE ORDER_ITEM
 (
 	Order_ID LONG INT NOT NULL,
 	Order_Date VARCHAR(20) NOT NULL,
@@ -147,47 +147,47 @@ CREATE TABLE ORDER
 	CONSTRAINT ORTHFK FOREIGN KEY (Theater_ID) REFERENCES THEATER(Theater_ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO ORDER VALUES(001, "10/15/2018", 1, 0, 1, 2, "20:00", "completed", 5286069914906911, "caro.wells", "A Star is Born", 006);
-INSERT INTO ORDER VALUES(002, "11/03/2018", 1, 0, 1, 2, "15:00", "completed", 344699209276199, "caro.wells", "The Nutcracker and the Four Realms", 006);
-INSERT INTO ORDER VALUES(003, "11/05/2018", 0, 1, 1, 2, "13:00", "completed", 4552006971193116, "geralyn.ann", "Bohemian Rhapsody", 001);
-INSERT INTO ORDER VALUES(004, "11/05/2018", 1, 0, 1, 2, "14:30", "completed", 4395562016874277, "mheine", "Creed II", 002);
-INSERT INTO ORDER VALUES(005, "11/06/2018", 0, 1, 1, 2, "11:00", "completed", 4912871342910117, "amow7", "Dr. Seuss’ The Grinch", 003);
-INSERT INTO ORDER VALUES(006, "11/07/2018", 1, 1, 0, 2, "19:00", "completed", 5513025517058497, "cliffp", "Fantastic Beasts: The Crimes of Grindelwald", 002);
-INSERT INTO ORDER VALUES(007, "11/07/2018", 0, 0, 2, 2, "17:30", "completed", 4276656543199739, "imaqtpie", "Instant Family", 004);
-INSERT INTO ORDER VALUES(008, "11/08/2018", 1, 1, 0, 2, "20:00", "completed", 5194413228923793, "imaqtpie", "Widows", 004);
-INSERT INTO ORDER VALUES(009, "11/10/2018", 2, 0, 0, 2, "12:15", "completed", 4681012056488201, "mike.spisak", "Ralph Breaks the Internet", 003);
-INSERT INTO ORDER VALUES(010, "11/11/2018", 0, 2, 0, 2, "11:00", "completed", 5501447884574357, "jgrant", "Robin Hood", 004);
-INSERT INTO ORDER VALUES(011, "11/13/2018", 0, 0, 0, 1, "14:45", "completed", 5363363524515956, "skipm", "The Front Runner", 001);
-INSERT INTO ORDER VALUES(012, "11/14/2018", 1, 0, 0, 1, "13:14", "completed", 4693856794670298, "nickbell", "Beautiful Boy", 003);
-INSERT INTO ORDER VALUES(013, "11/15/2018", 0, 1, 0, 1, "21:15", "completed", 6011976341234529, "mhuber7", "Venom", 004);
-INSERT INTO ORDER VALUES(014, "11/16/2018", 0, 0, 1, 1, "22:00", "completed", 5198686929615612, "austinb", "Smallfoot", 002);
-INSERT INTO ORDER VALUES(015, "11/16/2018", 1, 0, 0, 1, "11:30", "completed", 4547411419334009, "ceaguilera", "Boy Erased", 004);
-INSERT INTO ORDER VALUES(016, "11/20/2018", 0, 1, 0, 1, "12:15", "completed", 4949810261349086, "danielmarzec", "A Star is Born", 004);
-INSERT INTO ORDER VALUES(017, "11/20/2018", 0, 2, 2, 4, "13:45", "completed",  4015618789090697, "carter.shelt", "The Front Runner", 002);
-INSERT INTO ORDER VALUES(018, "11/21/2018", 2, 1, 3, 6, "20:15", "completed", 5194413228923793, "imaqtpie", "Bohemian Rhapsody", 001);
-INSERT INTO ORDER VALUES(019, "11/22/2018", 1, 1, 1, 3, "00:30", "completed", 6011455925362261, "everest.chiu", "Venom", 003);
-INSERT INTO ORDER VALUES(020, "11/22/2018", 0, 0, 0, 1, "12:15", "completed", 4380403607842182, "maguilera", "Smallfoot", 003);
-INSERT INTO ORDER VALUES(041, "11/23/2018", 5, 0, 0, 5, "13:00", "cancelled", 5442748681601927, "Dr. Seuss’ The Grinch", 001);
-INSERT INTO ORDER VALUES(021, "12/16/2018", 0, 2, 0, 2, "13:00", "cancelled", 5198686929615612, "austinb", "Bohemian Rhapsody", 002);
-INSERT INTO ORDER VALUES(022, "12/16/2018", 0, 0, 1, 1, "12:40", "cancelled", 5363363524515956, "skipm", "A Star is Born", 001);
-INSERT INTO ORDER VALUES(023, "12/17/2018", 1, 0, 0, 1, "01:00", "cancelled", 344699209276199, "caro.wells", "Creed II", 006);
-INSERT INTO ORDER VALUES(024, "12/17/2018", 1, 0, 0, 1, "12:00", "cancelled", 5513025517058497, "cliffp", "Beautiful Boy", 002);
-INSERT INTO ORDER VALUES(025, "12/18/2018", 0, 2, 2, 4, "15:15", "cancelled", 4681012056488201, "mike.spisak", "Boy Erased", 004);
-INSERT INTO ORDER VALUES(026, "12/19/2018", 2, 3, 4, 9, "16:03", "cancelled", 6011525138243720, "austinb", "Widows", 002);
-INSERT INTO ORDER VALUES(027, "12/19/2018", 0, 0, 1, 1, "16:15", "cancelled", 5501447884574357, "jgrant", "The Nutcracker and the Four Realms", 003);
-INSERT INTO ORDER VALUES(028, "12/20/2018", 1, 0, 1, 2, "17:40", "cancelled", 5442748681601927, "geralyn.ann", "Venom", 001);
-INSERT INTO ORDER VALUES(029, "12/21/2018", 0, 0, 1, 1, "14:00", "cancelled", 4912871342910117, "amow7", "Smallfoot", 005);
-INSERT INTO ORDER VALUES(030, "12/22/2018", 5, 0, 0, 1, "12:45", "cancelled", 4693856794670298, "nickbell", "Instant Family", 005);
-INSERT INTO ORDER VALUES(031, "12/18/2018", 1, 0, 0, 1, "13:00", "unused", 6011455925362261, "everest.chiu", "Dr. Seuss’ The Grinch", 003);
-INSERT INTO ORDER VALUES(032, "12/18/2018", 1, 0, 1, 2, "14:30", "unused", 344699209276199, "caro.wells", "Bohemian Rhapsody", 006);
-INSERT INTO ORDER VALUES(033, "12/19/2018", 0, 0, 2, 2, "12:45", "unused", 4912871342910117, "amow7", "Boy Erased", 004);
-INSERT INTO ORDER VALUES(034, "12/20/2018", 0, 1, 1, 2, "15:00", "unused", 4395562016874277, "mheine", "Creed II", 001);
-INSERT INTO ORDER VALUES(035, "12/21/2018", 2, 0, 2, 4, "16:20", "unused", 379309212232746, "brennen.clifford", "Fantastic Beasts: The Crimes of Grindelwald", 005);
-INSERT INTO ORDER VALUES(036, "12/24/2018", 0, 0, 1, 1, "09:30", "unused", 4693856794670298, "nickbell", "Creed II", 001);
-INSERT INTO ORDER VALUES(037, "12/24/2018", 0, 1, 1, 2, "10:20", "unused", 5194413228923793, "imaqtpie", "Smallfoot", 003);
-INSERT INTO ORDER VALUES(038, "12/25/2018", 0, 0, 1, 1, "12:00", "unused", 6011660415444301, "ceaguilera", "Widows", 004);
-INSERT INTO ORDER VALUES(039, "12/26/2018", 0, 0, 1, 1, "13:45", "unused", 5363363524515956, "skipm", "Bohemian Rhapsody", 002);
-INSERT INTO ORDER VALUES(040, "12/30/2018", 0, 1, 2, 3, "14:00", "unused", 5198686929615612, "austinb", "Ralph Breaks the Internet", 005);
+INSERT INTO ORDER_ITEM VALUES(001, "10/15/2018", 1, 0, 1, 2, "20:00", "completed", 5286069914906911, "caro.wells", "A Star is Born", 006);
+INSERT INTO ORDER_ITEM VALUES(002, "11/03/2018", 1, 0, 1, 2, "15:00", "completed", 344699209276199, "caro.wells", "The Nutcracker and the Four Realms", 006);
+INSERT INTO ORDER_ITEM VALUES(003, "11/05/2018", 0, 1, 1, 2, "13:00", "completed", 4552006971193116, "geralyn.ann", "Bohemian Rhapsody", 001);
+INSERT INTO ORDER_ITEM VALUES(004, "11/05/2018", 1, 0, 1, 2, "14:30", "completed", 4395562016874277, "mheine", "Creed II", 002);
+INSERT INTO ORDER_ITEM VALUES(005, "11/06/2018", 0, 1, 1, 2, "11:00", "completed", 4912871342910117, "amow7", "Dr. Seuss’ The Grinch", 003);
+INSERT INTO ORDER_ITEM VALUES(006, "11/07/2018", 1, 1, 0, 2, "19:00", "completed", 5513025517058497, "cliffp", "Fantastic Beasts: The Crimes of Grindelwald", 002);
+INSERT INTO ORDER_ITEM VALUES(007, "11/07/2018", 0, 0, 2, 2, "17:30", "completed", 4276656543199739, "imaqtpie", "Instant Family", 004);
+INSERT INTO ORDER_ITEM VALUES(008, "11/08/2018", 1, 1, 0, 2, "20:00", "completed", 5194413228923793, "imaqtpie", "Widows", 004);
+INSERT INTO ORDER_ITEM VALUES(009, "11/10/2018", 2, 0, 0, 2, "12:15", "completed", 4681012056488201, "mike.spisak", "Ralph Breaks the Internet", 003);
+INSERT INTO ORDER_ITEM VALUES(010, "11/11/2018", 0, 2, 0, 2, "11:00", "completed", 5501447884574357, "jgrant", "Robin Hood", 004);
+INSERT INTO ORDER_ITEM VALUES(011, "11/13/2018", 0, 0, 0, 1, "14:45", "completed", 5363363524515956, "skipm", "The Front Runner", 001);
+INSERT INTO ORDER_ITEM VALUES(012, "11/14/2018", 1, 0, 0, 1, "13:14", "completed", 4693856794670298, "nickbell", "Beautiful Boy", 003);
+INSERT INTO ORDER_ITEM VALUES(013, "11/15/2018", 0, 1, 0, 1, "21:15", "completed", 6011976341234529, "mhuber7", "Venom", 004);
+INSERT INTO ORDER_ITEM VALUES(014, "11/16/2018", 0, 0, 1, 1, "22:00", "completed", 5198686929615612, "austinb", "Smallfoot", 002);
+INSERT INTO ORDER_ITEM VALUES(015, "11/16/2018", 1, 0, 0, 1, "11:30", "completed", 4547411419334009, "ceaguilera", "Boy Erased", 004);
+INSERT INTO ORDER_ITEM VALUES(016, "11/20/2018", 0, 1, 0, 1, "12:15", "completed", 4949810261349086, "danielmarzec", "A Star is Born", 004);
+INSERT INTO ORDER_ITEM VALUES(017, "11/20/2018", 0, 2, 2, 4, "13:45", "completed",  4015618789090697, "carter.shelt", "The Front Runner", 002);
+INSERT INTO ORDER_ITEM VALUES(018, "11/21/2018", 2, 1, 3, 6, "20:15", "completed", 5194413228923793, "imaqtpie", "Bohemian Rhapsody", 001);
+INSERT INTO ORDER_ITEM VALUES(019, "11/22/2018", 1, 1, 1, 3, "00:30", "completed", 6011455925362261, "everest.chiu", "Venom", 003);
+INSERT INTO ORDER_ITEM VALUES(020, "11/22/2018", 0, 0, 0, 1, "12:15", "completed", 4380403607842182, "maguilera", "Smallfoot", 003);
+INSERT INTO ORDER_ITEM VALUES(041, "11/23/2018", 5, 0, 0, 5, "13:00", "cancelled", 5442748681601927, "Dr. Seuss’ The Grinch", 001);
+INSERT INTO ORDER_ITEM VALUES(021, "12/16/2018", 0, 2, 0, 2, "13:00", "cancelled", 5198686929615612, "austinb", "Bohemian Rhapsody", 002);
+INSERT INTO ORDER_ITEM VALUES(022, "12/16/2018", 0, 0, 1, 1, "12:40", "cancelled", 5363363524515956, "skipm", "A Star is Born", 001);
+INSERT INTO ORDER_ITEM VALUES(023, "12/17/2018", 1, 0, 0, 1, "01:00", "cancelled", 344699209276199, "caro.wells", "Creed II", 006);
+INSERT INTO ORDER_ITEM VALUES(024, "12/17/2018", 1, 0, 0, 1, "12:00", "cancelled", 5513025517058497, "cliffp", "Beautiful Boy", 002);
+INSERT INTO ORDER_ITEM VALUES(025, "12/18/2018", 0, 2, 2, 4, "15:15", "cancelled", 4681012056488201, "mike.spisak", "Boy Erased", 004);
+INSERT INTO ORDER_ITEM VALUES(026, "12/19/2018", 2, 3, 4, 9, "16:03", "cancelled", 6011525138243720, "austinb", "Widows", 002);
+INSERT INTO ORDER_ITEM VALUES(027, "12/19/2018", 0, 0, 1, 1, "16:15", "cancelled", 5501447884574357, "jgrant", "The Nutcracker and the Four Realms", 003);
+INSERT INTO ORDER_ITEM VALUES(028, "12/20/2018", 1, 0, 1, 2, "17:40", "cancelled", 5442748681601927, "geralyn.ann", "Venom", 001);
+INSERT INTO ORDER_ITEM VALUES(029, "12/21/2018", 0, 0, 1, 1, "14:00", "cancelled", 4912871342910117, "amow7", "Smallfoot", 005);
+INSERT INTO ORDER_ITEM VALUES(030, "12/22/2018", 5, 0, 0, 1, "12:45", "cancelled", 4693856794670298, "nickbell", "Instant Family", 005);
+INSERT INTO ORDER_ITEM VALUES(031, "12/18/2018", 1, 0, 0, 1, "13:00", "unused", 6011455925362261, "everest.chiu", "Dr. Seuss’ The Grinch", 003);
+INSERT INTO ORDER_ITEM VALUES(032, "12/18/2018", 1, 0, 1, 2, "14:30", "unused", 344699209276199, "caro.wells", "Bohemian Rhapsody", 006);
+INSERT INTO ORDER_ITEM VALUES(033, "12/19/2018", 0, 0, 2, 2, "12:45", "unused", 4912871342910117, "amow7", "Boy Erased", 004);
+INSERT INTO ORDER_ITEM VALUES(034, "12/20/2018", 0, 1, 1, 2, "15:00", "unused", 4395562016874277, "mheine", "Creed II", 001);
+INSERT INTO ORDER_ITEM VALUES(035, "12/21/2018", 2, 0, 2, 4, "16:20", "unused", 379309212232746, "brennen.clifford", "Fantastic Beasts: The Crimes of Grindelwald", 005);
+INSERT INTO ORDER_ITEM VALUES(036, "12/24/2018", 0, 0, 1, 1, "09:30", "unused", 4693856794670298, "nickbell", "Creed II", 001);
+INSERT INTO ORDER_ITEM VALUES(037, "12/24/2018", 0, 1, 1, 2, "10:20", "unused", 5194413228923793, "imaqtpie", "Smallfoot", 003);
+INSERT INTO ORDER_ITEM VALUES(038, "12/25/2018", 0, 0, 1, 1, "12:00", "unused", 6011660415444301, "ceaguilera", "Widows", 004);
+INSERT INTO ORDER_ITEM VALUES(039, "12/26/2018", 0, 0, 1, 1, "13:45", "unused", 5363363524515956, "skipm", "Bohemian Rhapsody", 002);
+INSERT INTO ORDER_ITEM VALUES(040, "12/30/2018", 0, 1, 2, 3, "14:00", "unused", 5198686929615612, "austinb", "Ralph Breaks the Internet", 005);
 
 CREATE TABLE MOVIE
 (
