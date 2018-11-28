@@ -68,7 +68,8 @@ CREATE TABLE ORDER_ITEM
 	Order_Date VARCHAR(20) NOT NULL,
 	Num_Senior_Tickets	INT,
 	Num_Child_Tickets	INT,
-	Num_Total_tickets	INT,
+  Num_Adult_Tickets INT,
+	Num_Total_Tickets	INT,
 	Order_Time	VARCHAR(20) NOT NULL,
 	Order_Status VARCHAR(10),
 	Card_No LONG INT NOT NULL,
@@ -251,7 +252,7 @@ INSERT INTO ORDER_ITEM VALUES(017, "11/20/2018", 0, 2, 2, 4, "13:45", "completed
 INSERT INTO ORDER_ITEM VALUES(018, "11/21/2018", 2, 1, 3, 6, "20:15", "completed", 5194413228923793, "imaqtpie", "Bohemian Rhapsody", 001);
 INSERT INTO ORDER_ITEM VALUES(019, "11/22/2018", 1, 1, 1, 3, "00:30", "completed", 6011455925362261, "everest.chiu", "Venom", 003);
 INSERT INTO ORDER_ITEM VALUES(020, "11/22/2018", 0, 0, 0, 1, "12:15", "completed", 4380403607842182, "maguilera", "Smallfoot", 003);
-INSERT INTO ORDER_ITEM VALUES(041, "11/23/2018", 5, 0, 0, 5, "13:00", "cancelled", 5442748681601927, "Dr. Seuss’ The Grinch", 001);
+INSERT INTO ORDER_ITEM VALUES(041, "11/23/2018", 5, 0, 0, 5, "13:00", "cancelled", 5442748681601927, "amow7", "Dr. Seuss’ The Grinch", 001);
 INSERT INTO ORDER_ITEM VALUES(021, "12/16/2018", 0, 2, 0, 2, "13:00", "cancelled", 5198686929615612, "austinb", "Bohemian Rhapsody", 002);
 INSERT INTO ORDER_ITEM VALUES(022, "12/16/2018", 0, 0, 1, 1, "12:40", "cancelled", 5363363524515956, "skipm", "A Star is Born", 001);
 INSERT INTO ORDER_ITEM VALUES(023, "12/17/2018", 1, 0, 0, 1, "01:00", "cancelled", 344699209276199, "caro.wells", "Creed II", 006);
