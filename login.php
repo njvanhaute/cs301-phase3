@@ -99,7 +99,7 @@
                     $_SESSION["type"] = 'customer';                          
                     
                     // Redirect user to welcome page
-                    header("location: welcome.php");
+                    header("location: nowplaying.php");
                   } else{
                       // Display an error message if username doesn't exist
                       $username_err = "Incorrect Username/Password.";
