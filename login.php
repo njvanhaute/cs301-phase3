@@ -1,43 +1,121 @@
 <?php
-   include("config.php");
-   session_start();
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
+  // Initialize the session
+  include("config.php");
+  session_start();
+  
+  // Check if the user is already logged in, if yes then redirect him to welcome page
+  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+      header("location: welcome.php");
+      exit;
+  }
+  
+  // Include config file
+  require_once "config.php";
+  
+  // Define variables and initialize with empty values
+  $username = $password = "";
+  $username_err = $password_err = "";
+  
+  // Processing form data when form is submitted
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+  
+      // Check if username is empty
+      if(empty(trim($_POST["username"]))){
+          $username_err = "Please enter username.";
+      } else{
+          $username = trim($_POST["username"]);
+      }
       
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-
-      $sql_customer = "SELECT Username FROM CUSTOMER WHERE Username = '$myusername' AND Password_Customer = '$mypassword'";
-      $result_customer = mysqli_query($db, $sql_customer);
-      $row_customer = mysqli_fetch_array($result_customer, MYSQLI_ASSOC);
-      $active_customer = $row_customer['active'];
-
-      $sql_manager = "SELECT Username FROM MANAGER WHERE Username = '$myusername' AND Password_Manager = '$mypassword'";
-      $result_manager = mysqli_query($db, $sql_manager);
-      $row_manager = mysqli_fetch_array($result_manager, MYSQLI_ASSOC);
-      $active_manager = $row_manager['active'];
-
-      $count_customer = mysqli_num_rows($result_customer);
-      $count_manager = mysqli_num_rows($result_manager);
+      // Check if password is empty
+      if(empty(trim($_POST["password"]))){
+          $password_err = "Please enter your password.";
+      } else{
+          $password = trim($_POST["password"]);
+      }
       
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if ($count_customer == 1){
-        $_SESSION['login_user'] = $myusername;
-        $_SESSION['user_type'] = 'customer';
-        header("location: welcome.php");
+      // Check if Manager
+      if(empty($username_err) && empty($password_err)){
+        // Prepare a select statement
+        $sql = "SELECT Username, Email, Password_Manager FROM MANAGER WHERE Username = ? AND Password_Manager = ?";
+        
+        if($stmt = mysqli_prepare($db, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            
+            // Set parameters
+            $param_username = $username;
+            $param_password = $password;
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+              // Store result
+              mysqli_stmt_store_result($stmt);
+              
+              // Check if username exists, if yes then verify password
+              if(mysqli_stmt_num_rows($stmt) == 1){                    
+                session_start();
+                // Store data in session variables
+                $_SESSION["loggedin"] = true;
+                $_SESSION["username"] = $username;  
+                $_SESSION["type"] = 'manager';                          
+                
+                // Redirect user to welcome page
+                header("location: welcome.php");
+              } 
+            }
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+        
+        // Close statement
+        mysqli_stmt_close($stmt);
       }
-      if ($count_manager == 1){
-        $_SESSION['login_user'] = $myusername;
-        $_SESSION['user_type'] = 'manager';
-        header("location: welcome.php");
+
+      // Check if Customer
+      if(empty($username_err) && empty($password_err)){
+          // Prepare a select statement
+          $sql = "SELECT Username, Email, Password_Customer FROM CUSTOMER WHERE Username = ? AND Password_Customer = ?";
+          
+          if($stmt = mysqli_prepare($db, $sql)){
+              // Bind variables to the prepared statement as parameters
+              mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+              
+              // Set parameters
+              $param_username = $username;
+              $param_password = $password;
+              
+              // Attempt to execute the prepared statement
+              if(mysqli_stmt_execute($stmt)){
+                  // Store result
+                  mysqli_stmt_store_result($stmt);
+                  
+                  // Check if username exists, if yes then verify password
+                  if(mysqli_stmt_num_rows($stmt) == 1){                    
+                    session_start();
+                    // Store data in session variables
+                    $_SESSION["loggedin"] = true;
+                    $_SESSION["username"] = $username;  
+                    $_SESSION["type"] = 'customer';                          
+                    
+                    // Redirect user to welcome page
+                    header("location: welcome.php");
+                  } else{
+                      // Display an error message if username doesn't exist
+                      $username_err = "No account found with that username.";
+                  }
+              } else{
+                  echo "Oops! Something went wrong. Please try again later.";
+              }
+          }
+          
+          // Close statement
+          mysqli_stmt_close($stmt);
       }
-      else {
-        $message = "Incorrect Username/Password";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-      }
-   }
+      
+      // Close connection
+      mysqli_close($db);
+  }
 ?>
 
 <!DOCTYPE html>
