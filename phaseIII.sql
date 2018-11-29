@@ -23,7 +23,7 @@ CREATE TABLE CUSTOMER
 	Username VARCHAR(15) NOT NULL,
 	Email VARCHAR(30) NOT NULL,
 	Password_Customer VARCHAR(20) NOT NULL,
-	CONSTRAINT MAPK PRIMARY KEY(Username, Email)
+	CONSTRAINT MAPK PRIMARY KEY(Username)
 );
 
 CREATE TABLE MOVIE
@@ -137,8 +137,8 @@ INSERT INTO MANAGER VALUES('scao', 'scao@uamovie.com', 'moviefuff112');
 INSERT INTO MANAGER VALUES('nvanhaute', 'nvanhaute@uamovie.com', 'sweetn1blets');
 INSERT INTO MANAGER VALUES('amusaev', 'amusaev@uamovie.com', 'b0ssman3');
 
-INSERT INTO CUSTOMER VALUES('mheine', 'mheine@uamovie.com', 'hookem1');
-INSERT INTO CUSTOMER VALUES('amow7', 'mheine@uamovie.com', 'g0dawgs');
+INSERT INTO CUSTOMER VALUES('mheine', 'mheine@aol.com', 'hookem1');
+INSERT INTO CUSTOMER VALUES('amow7', 'amow7@uga.edu', 'g0dawgs');
 INSERT INTO CUSTOMER VALUES('caro.wells', 'cwells@ua.edu', 'd0thanrulez!');
 INSERT INTO CUSTOMER VALUES('cliffp', 'pricec@ua.edu', 'league0flegends');
 INSERT INTO CUSTOMER VALUES('lukehatfield', 'luke@gt.edu', 'g0bucks');
