@@ -102,7 +102,7 @@
                     header("location: welcome.php");
                   } else{
                       // Display an error message if username doesn't exist
-                      $username_err = "No account found with that username.";
+                      $username_err = "Incorrect Username/Password.";
                   }
               } else{
                   echo "Oops! Something went wrong. Please try again later.";
@@ -136,10 +136,10 @@
         <form action="" method="POST">
           <label>Username</label>
           <input type="text" name="username" class="form-control">
-          <span class="help-block"><?php echo $username_err; ?></span>  
+          <span class="help-block" style="color: red;"><?php echo $username_err; ?></span>  
           <label>Password</label>
           <input type="password" name="password" class="form-control">
-          <span class="help-block"><?php echo $password_err; ?></span>
+          <span class="help-block" style="color: red;"><?php echo $password_err; ?></span>
           <div class="form-group">
               <input type="submit" class="btn btn-primary" value="Login">
           </div>

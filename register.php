@@ -199,19 +199,19 @@
           <form action="" method="POST">
             <label>Username</label>
             <input type="text" name="username" class="form-control">
-            <span class="help-block"><?php echo $username_err; ?></span>
+            <span class="help-block" style="color: red;"><?php echo $username_err; ?></span>
             <label>Email Address</label>
             <input type="text" name="email" class="form-control">
-            <span class="help-block"><?php echo $email_err; ?></span>
+            <span class="help-block" style="color: red;"><?php echo $email_err; ?></span>
             <label>Password</label>
             <input type="password" name="password" class="form-control">
-            <span class="help-block"><?php echo $password_err; ?></span>
+            <span class="help-block" style="color: red;"><?php echo $password_err; ?></span>
             <label>Confirm Password</label>
             <input type="password" name="confirm_password" class="form-control"">
-            <span class="help-block"><?php echo $confirm_password_err; ?></span>
+            <span class="help-block" style="color: red;"><?php echo $confirm_password_err; ?></span>
             <label>Manager Password</label>
             <input type="password" name="manager_password" class="form-control"">
-            <span class="help-block"><?php echo $manager_password_err; ?></span>
+            <span class="help-block" style="color: red;"><?php echo $manager_password_err; ?></span>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-default" value="Reset">
