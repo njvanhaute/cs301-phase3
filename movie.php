@@ -24,6 +24,11 @@
   $movie_rating = $row['Rating'];
   $movie_length = $row['Movie_Length'];
   $movie_genre = $row['Movie_Genre'];
+
+  $sql_avg = "SELECT AVG(Rating) AS average FROM REVIEW WHERE Title = '$movie_title';";
+  $result_avg = mysqli_query($db, $sql_avg);
+  $row_avg = mysqli_fetch_assoc($result_avg);
+  $movie_avg = $row_avg['average'];
 ?>
  
 <!DOCTYPE html>
@@ -45,11 +50,12 @@
       <tr><th style='font-size: 20px; padding: 10px;'>Rating</td><td style='font-size: 20px; padding: 10px;'><?php echo $movie_rating; ?></td></tr>
       <tr><th style='font-size: 20px; padding: 10px;'>Movie Length</td><td style='font-size: 20px; padding: 10px;'><?php echo $movie_length; ?> minutes</td></tr>
       <tr><th style='font-size: 20px; padding: 10px;'>Movie Genre</td><td style='font-size: 20px; padding: 10px;'><?php echo $movie_genre; ?></td></tr>
+      <tr><th style='font-size: 20px; padding: 10px;'>Movie Average Rating</td><td style='font-size: 20px; padding: 10px;'><?php echo bcdiv($movie_avg, 1, 1); ?>/5 stars</td></tr>
     </table><br>
     <p>
-      <a class="btn btn-primary" href="" style="width: 150px; font-size: 20px;">Overview</a>
-      <a class="btn btn-primary" href="" style="width: 150px; font-size: 20px;">Movie Review</a>
-      <a class="btn btn-primary" href="" style="width: 150px; font-size: 20px;">Buy Ticket</a>
+      <a class="btn btn-primary" href="overview.php" style="width: 150px; font-size: 20px;">Overview</a>
+      <a class="btn btn-primary" href="review.php" style="width: 150px; font-size: 20px;">Movie Review</a>
+      <a class="btn btn-primary" href="ticket.php" style="width: 150px; font-size: 20px;">Buy Ticket</a>
     </p>
 </body>
 </html>
