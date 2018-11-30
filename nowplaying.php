@@ -21,17 +21,23 @@
 </head>
 <body>
     <div class="page-header">
-        <a href="welcome.php"><img src="images/me_icon.png" width="75px" style="top:15px; left: 15px; position: absolute;"></a>
+        <a href="me.php"><img src="images/me_icon.png" width="75px" style="top:15px; left: 15px; position: absolute;"></a>
         <h1><b>Now Playing</b></h1>
     </div>
+    <table style='margin: auto; width: 75%;' class='table-bordered'>
     <?php 
       $sql = "SELECT Title FROM MOVIE;";
       $result = mysqli_query($db, $sql);
-      echo "<table style='margin: auto; width: 75%;' class='table-bordered'>";
-      while ($row_movie = mysqli_fetch_array($result)){
-        echo "<tr><td style='font-size: 20px; padding: 10px;'><a>".($row_movie['Title'])."</a></td></tr>";
-      }
-      echo "<table>";
     ?>
+    <?php while ($row_movie = mysqli_fetch_array($result)) : ?>
+      <tr>
+        <td style='font-size: 20px; padding: 10px;'>
+          <form method="POST" action="movie.php">
+            <input type="submit" name="title" value="<?php echo $row_movie['Title']; ?>"/>
+          </form>
+        </td>
+      </tr>
+    <?php endwhile; ?>
+    </table>
 </body>
 </html>

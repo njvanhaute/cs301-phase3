@@ -60,17 +60,17 @@
                 $_SESSION["type"] = 'manager';                          
                 
                 // Redirect user to welcome page
-                header("location: welcome.php");
+                header("location: manager.php");
               } 
             }
             else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
+          }
+          
+          // Close statement
+          mysqli_stmt_close($stmt);
         }
-        
-        // Close statement
-        mysqli_stmt_close($stmt);
-      }
 
       // Check if Customer
       if(empty($username_err) && empty($password_err)){
