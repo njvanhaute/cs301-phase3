@@ -25,7 +25,7 @@
     </div>
     <a><h2>My Order History</h2></a>
     <a href="payment_info.php"><h2>My Payment Information</h2></a>
-    <a><h2>My Preferred Theater</h2></a><br>
+    <a href="pref_theater.php"><h2>My Preferred Theater</h2></a><br>
     <p>
       <a href="logout.php" class="btn btn-danger">Log Out</a>
       <a href="nowplaying.php" class="btn btn-danger">Back</a>
