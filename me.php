@@ -23,7 +23,7 @@
     <div class="page-header">
         <h1><b>Me</b></h1>
     </div>
-    <a><h2>My Order History</h2></a>
+    <a href="order_history.php"><h2>My Order History</h2></a>
     <a href="payment_info.php"><h2>My Payment Information</h2></a>
     <a href="pref_theater.php"><h2>My Preferred Theater</h2></a><br>
     <p>
