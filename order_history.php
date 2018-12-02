@@ -7,6 +7,11 @@
       header("location: login.php");
       exit;
   }
+
+  if (isset($_POST['sel'])){
+    $_SESSION['oid'] = $_POST['sel'];
+    header("location: order_detail.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +23,29 @@
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
     </style>
+    <script>
+      function myFunction() {
+        // Declare variables 
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 1; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          } 
+        }
+      }
+    </script>
 </head>
 <body>
     <div class="page-header">
@@ -25,8 +53,9 @@
         <h1><b>Order History</b></h1>
     </div>
     <form name="card" action="" method="POST">
-      <table style='margin: auto; width: 75%;' class='table-bordered'>
-      <tr>
+      <input style='margin: auto; width: 75%;' type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search for Order ID..."><br>
+      <table style='margin: auto; width: 75%;' class='table-bordered' id="myTable">
+      <tr class="header">
         <td style='font-size: 20px; padding: 10px;'><strong>Select</strong></th>
         <td style='font-size: 20px; padding: 10px;'><strong>Order ID</strong></th>
         <td style='font-size: 20px; padding: 10px;'><strong>Movie</strong></th>
@@ -61,6 +90,9 @@
           <td style='font-size: 20px; padding: 10px;'>
             <?php 
               $total_cost = ($ticket_cost * $row_movie['Num_Adult_Tickets']) + ($senior_discount * $ticket_cost * $row_movie['Num_Senior_Tickets']) + ($child_discount * $ticket_cost * $row_movie['Num_Child_Tickets']); 
+              if ($row_movie['Order_Status'] == 'cancelled'){
+                $total_cost = $total_cost - 5;
+              }
               echo "$".bcdiv($total_cost, 1, 2);  
             ?>
           </td>
