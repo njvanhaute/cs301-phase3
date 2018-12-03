@@ -8,6 +8,8 @@
       exit;
   }
   
+  $submit_err = "";
+  
   if (isset($_POST['submit'])){
     $oid = $_SESSION['oid'];
     $sql = "SELECT Order_Status FROM ORDER_ITEM WHERE Order_ID = '$oid';";
@@ -103,8 +105,8 @@
       <?php endwhile; ?>
       </table><br>
       <div class="form-group">
-        <a class="btn btn-danger" href="order_history.php" style="width: 150px; font-size: 20px;">Back</a>
-        <input type="submit" name="submit" class="btn btn-danger" value="Cancel This Order" style="font-size: 20px;">
+          <a class="btn btn-danger" href="order_history.php">Back</a>
+          <input type="submit" name="submit" class="btn btn-danger" value="Cancel This Order">
       </div>
       <span class="help-block" style="color: red;"><?php echo $submit_err; ?></span>
     </form>
