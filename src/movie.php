@@ -49,8 +49,8 @@
   }
   if ($movie_title == 'The Front Runner'){
     $img = '../images/front_runner.jpg';
-  }
-  if ($movie_title == "Dr. Seuss’ The Grinch"){
+  } 
+  if (substr($movie_title, -6) == "Grinch"){
     $img = '../images/grinch.jpg';
   }
   if ($movie_title == 'Instant Family'){
