@@ -103,8 +103,8 @@
       <?php endwhile; ?>
       </table><br>
       <div class="form-group">
-          <a class="btn btn-danger" href="order_history.php">Back</a>
-          <input type="submit" name="submit" class="btn btn-danger" value="Cancel This Order">
+        <a class="btn btn-danger" href="order_history.php" style="width: 150px; font-size: 20px;">Back</a>
+        <input type="submit" name="submit" class="btn btn-danger" value="Cancel This Order" style="font-size: 20px;">
       </div>
       <span class="help-block" style="color: red;"><?php echo $submit_err; ?></span>
     </form>

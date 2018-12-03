@@ -106,8 +106,8 @@
       </select><br>
       <span class="help-block" style="color: red;"><?php echo $ticket_err; ?></span>
       <div class="form-group">
-        <a class="btn btn-danger" href="select_time.php" style="">Back</a>
-        <input type="submit" class="btn btn-primary" value="Next">
+        <a class="btn btn-danger" href="select_time.php" style="width: 150px; font-size: 20px;">Back</a>
+        <input type="submit" class="btn btn-primary" value="Next" style="width: 150px; font-size: 20px;">
       </div>
     </form>
 </body>

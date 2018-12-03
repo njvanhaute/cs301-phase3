@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
+        th {background-color: #f1f1f1;}
     </style>
 </head>
 <body>
@@ -35,9 +36,9 @@
     <form name="card" action="" method="POST">
       <table style='margin: auto; width: 75%;' class='table-bordered'>
       <tr>
-        <td style='font-size: 20px; padding: 10px;'><strong>Select</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Name</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Address</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Select</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Name</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Address</strong></th>
       </tr>
       <?php 
         $uname = $_SESSION["username"];
@@ -59,8 +60,8 @@
       <?php endwhile; ?>
       </table><br>
       <div class="form-group">
-          <input type="submit" class="btn btn-danger" value="Delete">
-          <a class="btn btn-danger" href="me.php">Back</a>
+        <a class="btn btn-danger" href="me.php" style="width: 150px; font-size: 20px;">Back</a>
+        <input type="submit" class="btn btn-danger" value="Delete" style="width: 150px; font-size: 20px;">
       </div>
     </form>
 </body>

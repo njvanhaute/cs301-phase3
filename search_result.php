@@ -56,8 +56,8 @@
       </table><br>
       <div class="form-group">
         <input type="checkbox" name="saved" value="yes"> Save this Theater<br><br>
-        <a class="btn btn-danger" href="buy_ticket.php">Back</a>
-        <input type="submit" class="btn btn-primary" value="Next">
+        <a class="btn btn-danger" href="buy_ticket.php" style="width: 150px; font-size: 20px;">Back</a>
+        <input type="submit" class="btn btn-primary" value="Next" style="width: 150px; font-size: 20px;">
       </div>
     </form>
 </body>

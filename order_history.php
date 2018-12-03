@@ -101,8 +101,8 @@
       <?php endwhile; ?>
       </table><br>
       <div class="form-group">
-          <a class="btn btn-danger" href="me.php">Back</a>
-          <input type="submit" class="btn btn-primary" value="View Detail">
+        <a class="btn btn-danger" href="me.php" style="width: 150px; font-size: 20px;">Back</a>
+        <input type="submit" class="btn btn-primary" value="View Detail" style="width: 150px; font-size: 20px;">
       </div>
     </form>
 </body>

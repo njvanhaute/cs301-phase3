@@ -62,6 +62,6 @@
         </td>
       </tr>
     </table><br>
-    <a href="movie.php" class="btn btn-danger" style="font-size: 20px;">Back</a>
+    <a class="btn btn-danger" href="movie.php" style="width: 150px; font-size: 20px;">Back</a>
 </body>
 </html>
