@@ -105,7 +105,7 @@
       <a class="btn btn-danger" href="nowplaying.php" style="width: 150px; font-size: 20px;">Back</a>
       <a class="btn btn-primary" href="overview.php" style="width: 150px; font-size: 20px;">Overview</a>
       <a class="btn btn-primary" href="review.php" style="width: 150px; font-size: 20px;">Movie Review</a>
-      <a class="btn btn-primary" href="ticket.php" style="width: 150px; font-size: 20px;">Buy Ticket</a>
+      <a class="btn btn-primary" href="buy_ticket.php" style="width: 150px; font-size: 20px;">Buy Ticket</a>
     </p>
 </body>
 </html>
