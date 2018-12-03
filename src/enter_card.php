@@ -42,6 +42,11 @@
   $child_tickets = $_SESSION['child_tickets'];
   $total_tickets = $adult_tickets + $senior_tickets + $child_tickets;
 
+  $cname_err = "";
+  $cnum_err = "";
+  $cvv_err = "";
+  $exp_err = "";
+
   if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     if (isset($_POST['new'])){
       if (empty($_POST['card_name']) || empty($_POST['card_no']) || empty($_POST['cvv']) || empty($_POST['exp_date'])){
@@ -125,7 +130,7 @@
             <option value="<?php echo $row['Card_No']; ?>"><?php echo $row['Card_No'];?></option>
           <?php endwhile ?>
         </select><br><br>
-        <input type="submit" name='old' class="btn btn-primary" value="Buy Ticket" style="width: 150px; font-size: 20px;">
+        <input type="submit" name='old' class="btn btn-primary" value="Buy Ticket">
       </form>
       <form action="" method="POST"> 
         <h2>Use a new card</h2>
@@ -142,7 +147,7 @@
         <input type="text" name="exp_date" class="form-control"><br>
         <span class="help-block" style="color: red;"><?php echo $exp_err; ?></span>
         <input type="checkbox" name="save" value="yes"> Save this Card for Later Use<br><br>
-        <input type="submit" name="new" class="btn btn-primary" value="Submit" style="width: 150px; font-size: 20px;">
+        <input type="submit" name="new" class="btn btn-primary" value="Submit">
       </form>
     </div>
 </body>
