@@ -9,7 +9,7 @@
   }
 
   $search_value = $_SESSION['search'];
-  $sql = "select * from theater where Name like '%$search_value%' OR Theater_City like '%$search_value%' OR Theater_State like '%$search_value%'";
+  $sql = "select * from THEATER where Name like '%$search_value%' OR Theater_City like '%$search_value%' OR Theater_State like '%$search_value%'";
   $result = mysqli_query($db, $sql);
   
   if (isset($_POST['sel'])){
@@ -21,6 +21,11 @@
     }
     $_SESSION['tid'] = $tid;
     header("location: select_time.php");
+  }
+
+  if (!$result) {
+    printf("Error: %s\n", mysqli_error($db));
+    exit();
   }
 ?>
 
