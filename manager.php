@@ -23,7 +23,7 @@
     <div class="page-header">
         <h1><b>Choose Functionality</b></h1>
     </div>
-    <p><a class="btn btn-primary" href="" style="font-size: 20px;">View Revenue Report</a></p>
-    <p><a class="btn btn-primary" href="" style="font-size: 20px;">View Popular Movie Report</a></p>
+    <p><a class="btn btn-primary" href="revenue_report.php" style="font-size: 20px;">View Revenue Report</a></p>
+    <p><a class="btn btn-primary" href="pop_movie_report.php" style="font-size: 20px;">View Popular Movie Report</a></p>
 </body>
 </html>
