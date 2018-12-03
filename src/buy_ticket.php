@@ -53,13 +53,13 @@
           <option value="<?php echo $row['Name']; ?>"><?php echo $row['Name'];?></option>
         <?php endwhile ?>
       </select>
-      <input type="submit" class="btn btn-primary" value="Choose">
+      <input type="submit" class="btn btn-primary" value="Choose" style="width: 150px; font-size: 20px;">
     </form>
     <h2>-- OR --</h2><br>
     <form name="card" action="" method="POST">
       <input name="searchval" style='margin: auto; width: 50%;' type="text" class="form-control" placeholder="Search by City/State/Theater"><br>
-      <a class="btn btn-danger" href="movie.php">Back</a>
-      <input type="submit" class="btn btn-primary" value="Search">
+      <a class="btn btn-danger" href="movie.php" style="width: 150px; font-size: 20px;">Back</a>
+      <input type="submit" class="btn btn-primary" value="Search" style="width: 150px; font-size: 20px;">
     </form>
 </body>
 </html>
