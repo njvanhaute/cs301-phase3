@@ -23,12 +23,12 @@
     <div class="page-header">
         <h1><b>Me</b></h1>
     </div>
-    <a><h2>My Order History</h2></a>
-    <a href="payment_info.php"><h2>My Payment Information</h2></a>
-    <a href="pref_theater.php"><h2>My Preferred Theater</h2></a><br>
+    <a href="order_history.php" class="btn btn-primary" style="width: 400px; font-size: 30px;">My Order History</a><br><br>
+    <a href="payment_info.php" class="btn btn-primary" style="width: 400px; font-size: 30px;">My Payment Information</a><br><br>
+    <a href="pref_theater.php" class="btn btn-primary" style="width: 400px; font-size: 30px;">My Preferred Theater</a><br><br>
     <p>
-      <a href="logout.php" class="btn btn-danger">Log Out</a>
-      <a href="nowplaying.php" class="btn btn-danger">Back</a>
+      <a class="btn btn-danger" href="logout.php" style="width: 150px; font-size: 20px;">Log Out</a>
+      <a class="btn btn-danger" href="nowplaying.php" style="width: 150px; font-size: 20px;">Back</a>
     </p>
 </body>
 </html>
