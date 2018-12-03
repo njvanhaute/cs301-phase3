@@ -15,7 +15,7 @@
   $senior_cost = 9.23;
   $child_cost = 8.08;
 
-  $top_sellers_sql = "SELECT * FROM ORDER_ITEM GROUP BY NUM_TOTAL_TICKETS;"; 
+  $top_sellers_sql = "select Title, MONTH_NO, SUMTOT from ( select Title, MONTH_NO, SUMTOT, (@rn:=if(@prev = MONTH_NO, @rn +1, 1)) as rownumb, @prev:= MONTH_NO from ( select Title, MONTH_NO, SUM(Num_Total_Tickets) AS SUMTOT from ORDER_ITEM_W_MONTH where Order_Status <> \"cancelled\" GROUP BY Title, MONTH_NO order by MONTH_NO, SUMTOT desc, Title ) as sortedlist JOIN (select @prev:=NULL, @rn :=0) as vars ) as groupedlist where rownumb<=3 order by MONTH_NO, SUMTOT desc, Title;"; 
   $result = mysqli_query($db, $top_sellers_sql);
   $months = [];
   $row = mysqli_fetch_assoc($result);
