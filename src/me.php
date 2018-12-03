@@ -4,6 +4,7 @@
   header('Content-Type: text/html; charset=iso-8859-1');
   session_start();
   // Check if the user is logged in, if not then redirect him to login page
+  error_reporting(0);
   if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       header("location: login.php");
       exit;

@@ -1,6 +1,6 @@
 <?php
   // Initialize the session
-  error_reporting(E_ALL);
+  error_reporting(0);
   ini_set('display_errors', 1);
   header('Content-Type: text/html; charset=iso-8859-1');
   include("config.php");

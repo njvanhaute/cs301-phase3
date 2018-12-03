@@ -4,6 +4,7 @@
   session_start();
   header('Content-Type: text/html; charset=iso-8859-1'); 
   // Define variables and initialize with empty values
+  error_reporting(0);
   $username = $email = $password = $confirm_password = $manager_password = "";
   $username_err = $email_err = $password_err = $confirm_password_err =  $manager_password_err = "";
   
