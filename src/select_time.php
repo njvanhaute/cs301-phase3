@@ -42,7 +42,7 @@
     <form name="choose" action="" method="POST">
       <label>Choose a date: </label>
       <input type="date" name="date"><br>
-      <span class="help-block" style="color: red;"><?php echo $date_err; ?></span>
+      <span class="help-block" style="color: red;"><?php if (isset($date_err)) {echo $date_err;} ?></span>
       <table style='margin: auto; width: 75%;' class='table-bordered'>
         <tr>
           <th style='font-size: 20px; padding: 10px; text-align: center;'>Showtime</th>
