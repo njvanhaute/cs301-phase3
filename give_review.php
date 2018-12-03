@@ -8,14 +8,8 @@
       exit;
   }
 
-  if ($_POST['title']){
-    $_SESSION['title'] = $_POST['title'];
-    $movie_title = $_POST['title'];
-  }
-
-  else {
-    $movie_title = $_SESSION['title'];
-  }
+  $rating_err = $review_title_err = $comment_err = "";
+  $movie_title = $_SESSION['title'];
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["review_title"]))){

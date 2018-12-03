@@ -8,6 +8,8 @@
       exit;
   }
 
+  $date_err = "";
+
   $tid = $_SESSION['tid'];
   $movie_name = $_SESSION['title'];
 

@@ -8,14 +8,7 @@
       exit;
   }
 
-  if ($_POST['title']){
-    $_SESSION['title'] = $_POST['title'];
-    $movie_title = $_POST['title'];
-  }
-
-  else {
-    $movie_title = $_SESSION['title'];
-  }
+  $movie_title = $_SESSION['title'];
 
   $sql = "SELECT Synopsis, Movie_Cast FROM MOVIE WHERE Title = '$movie_title';";
   $result = mysqli_query($db, $sql);

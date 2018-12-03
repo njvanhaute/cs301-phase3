@@ -9,7 +9,7 @@
   }
 
   $search_value = $_SESSION['search'];
-  $sql = "select * from theater where Name like '%$search_value%' OR Theater_City like '%$search_value%' OR Theater_State like '%$search_value%'";
+  $sql = "SELECT * FROM THEATER WHERE Name LIKE '%$search_value%' OR Theater_City LIKE '%$search_value%' OR Theater_State LIKE '%$search_value%'";
   $result = mysqli_query($db, $sql);
   
   if (isset($_POST['sel'])){
