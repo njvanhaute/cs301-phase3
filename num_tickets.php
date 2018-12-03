@@ -14,7 +14,7 @@
   $time = date("H:i", strtotime($format_time));
   $format_date = $_SESSION['date'];
   $date = date("m-d-Y", strtotime($format_date));
-  $display_date = date("l, F j", strtotime($date));
+  $display_date = date("l, F j", strtotime($format_date));
 
   $sql = "SELECT * FROM THEATER WHERE Theater_ID = '$tid'";
   $sql1 = "SELECT * FROM MOVIE WHERE Title = '$movie_name'";
@@ -30,7 +30,7 @@
 
   if (isset($_POST['adult_tickets'])){
     $total = $_POST['adult_tickets'] + $_POST['senior_tickets'] + $_POST['child_tickets'];
-    if (total > 0){
+    if ($total > 0){
       $_SESSION['adult_tickets'] = $_POST['adult_tickets'];
       $_SESSION['senior_tickets'] = $_POST['senior_tickets'];
       $_SESSION['child_tickets'] = $_POST['child_tickets'];
@@ -62,7 +62,7 @@
     <table>
     <form name="choose" action="" method="POST">
       <h1>How many tickets?</h1><br>
-      <label>Adult Matinee </label>
+      <label>Adult Matinee:&nbsp;</label>
       <select name="adult_tickets">
         <option value="0">0</option>
         <option value="1">1</option>
@@ -76,7 +76,7 @@
         <option value="9">9</option>
         <option value="10">10</option>
       </select><br><br>
-      <label>Senior </label>
+      <label>Senior:&nbsp;</label>
       <select name="senior_tickets">
         <option value="0">0</option>
         <option value="1">1</option>
@@ -90,7 +90,7 @@
         <option value="9">9</option>
         <option value="10">10</option>
       </select><br><br>
-      <label>Child </label>
+      <label>Child:&nbsp;</label>
       <select name="child_tickets">
         <option value="0">0</option>
         <option value="1">1</option>
@@ -103,7 +103,7 @@
         <option value="8">8</option>
         <option value="9">9</option>
         <option value="10">10</option>
-      </select><br><br>
+      </select><br>
       <span class="help-block" style="color: red;"><?php echo $ticket_err; ?></span>
       <div class="form-group">
         <a class="btn btn-danger" href="select_time.php" style="">Back</a>

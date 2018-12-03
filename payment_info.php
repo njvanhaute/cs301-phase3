@@ -41,7 +41,7 @@
       </tr>
       <?php 
         $uname = $_SESSION["username"];
-        $sql = "SELECT Card_No, Name_On_Card, Expiration_Date FROM PAYMENT_INFO WHERE username = '$uname';";
+        $sql = "SELECT Card_No, Name_On_Card, Expiration_Date FROM PAYMENT_INFO WHERE username = '$uname' AND Saved = 1;";
         $result = mysqli_query($db, $sql);
       ?>
       <?php while ($row_movie = mysqli_fetch_array($result)) : ?>

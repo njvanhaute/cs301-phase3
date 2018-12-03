@@ -49,12 +49,12 @@
             <td style="font-size: 20px; padding: 10px;">
               <input type="radio" name="sel" value="<?php echo $row['Theater_ID']; ?>"></input>
             </td>
-            <td><?php echo $row["Name"]."<br>".$row["Theater_Street"]. ", ".$row["Theater_City"].", ".$row["Theater_State"]. ", " . $row["Theater_ZIP"] ; ?></td>
+            <td style="font-size: 20px; padding: 10px;"><?php echo $row["Name"]."<br>".$row["Theater_Street"]. ", ".$row["Theater_City"].", ".$row["Theater_State"]. ", " . $row["Theater_ZIP"] ; ?></td>
           </tr>
         <?php endwhile; ?>
-      </table>
+      </table><br>
       <div class="form-group">
-        <input type="checkbox" name="saved" value="yes"> Save this Theater<br>
+        <input type="checkbox" name="saved" value="yes"> Save this Theater<br><br>
         <a class="btn btn-danger" href="buy_ticket.php">Back</a>
         <input type="submit" class="btn btn-primary" value="Next">
       </div>

@@ -3,7 +3,7 @@
   include("config.php");
   session_start();
   // Check if the user is logged in, if not then redirect him to login page
-  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+  if(empty($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       header("location: login.php");
       exit;
   }
@@ -29,7 +29,7 @@
   $senior_discount = 1 - $row2['Senior_discount'];
   $child_discount = 1 - $row2['Child_discount'];
 
-  $sql3 = "SELECT * FROM PAYMENT_INFO WHERE username = '$uname';";
+  $sql3 = "SELECT * FROM PAYMENT_INFO WHERE username = '$uname' AND Saved = 1;";
   $result3 = mysqli_query($db, $sql3);
 
   $findmax = "SELECT MAX(Order_ID) AS m FROM ORDER_ITEM;";
@@ -42,33 +42,56 @@
   $child_tickets = $_SESSION['child_tickets'];
   $total_tickets = $adult_tickets + $senior_tickets + $child_tickets;
 
-  if (isset($_POST['card'])){
-    $cardno = $_POST['card'];
-    $sql = "SELECT * FROM PAYMENT_INFO WHERE Card_No = '$cardno';";
-    $result = mysqli_query($db, $sql);
-    $row = mysqli_fetch_array($result);
-    $cardname = $row['Name_On_Card'];
-    $cvv = $row['CVV'];
-    $exp_date = $row['Expiration_Date'];
-    $sql1 = "INSERT INTO ORDER_ITEM VALUES('$oid', '$date', '$senior_tickets', '$child_tickets', '$adult_tickets', '$total_tickets', '$time', 'unused', '$cardno', '$uname', '$movie_name', '$tid');";
-    $result1 = mysqli_query($db, $sql1);
-    $_SESSION['oid'] = $oid;
-    header("location: confirmation.php");
-  }
-
-  if (isset($_POST['card_name'])){
-    $cardno = $_POST['card_no'];
-    $cardname = $_POST['card_name'];
-    $cvv = $_POST['cvv'];
-    $exp_date = $_POST['exp_date'];
-    if (isset($_POST['saved'])){
-      $sql = "INSERT INTO PAYMENT_INFO VALUES('$cardno', '$cvv', '$cardname', '$exp_date', 1, '$uname');";
-      mysqli_query($db, $sql);
+  if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if (isset($_POST['new'])){
+      if (empty($_POST['card_name']) || empty($_POST['card_no']) || empty($_POST['cvv']) || empty($_POST['exp_date'])){
+        if (empty($_POST['card_name'])){
+          $cname_err = 'Enter the name on card.';
+        }
+        if (empty($_POST['card_no'])){
+          $cnum_err = 'Enter the number on card.';
+        }
+        if (empty($_POST['cvv'])){
+          $cvv_err = 'Enter the CVV on card.';
+        }
+        if (empty($_POST['exp_date'])){
+          $exp_err = 'Enter the Expiration Date on card.';
+        }
+      }
+      else{
+        $cardno = $_POST['card_no'];
+        $cardname = $_POST['card_name'];
+        $cvv = $_POST['cvv'];
+        $exp_date = $_POST['exp_date'];
+        if (isset($_POST['save'])){
+          $sql = "INSERT INTO PAYMENT_INFO VALUES('$cardno', '$cvv', '$cardname', '$exp_date', 1, '$uname');";
+          mysqli_query($db, $sql);
+        }
+        else{
+          $sql = "INSERT INTO PAYMENT_INFO VALUES('$cardno', '$cvv', '$cardname', '$exp_date', 0, '$uname');";
+          mysqli_query($db, $sql);
+        }
+        $p = "INSERT INTO ORDER_ITEM VALUES('$oid', '$date', '$senior_tickets', '$child_tickets', '$adult_tickets', '$total_tickets', '$time', 'unused', '$cardno', '$uname', '$movie_name', '$tid');";
+        mysqli_query($db, $p);
+        $_SESSION['oid'] = $oid;
+        header("location: confirmation.php");
+      }
     }
-    $sql1 = "INSERT INTO ORDER_ITEM VALUES('$oid', '$date', '$senior_tickets', '$child_tickets', '$adult_tickets', '$total_tickets', '$time', 'unused', '$cardno', '$uname', '$movie_name', '$tid');";
-    $result1 = mysqli_query($db, $sql1);
-    $_SESSION['oid'] = $oid;
-    header("location: confirmation.php");
+    else if (isset($_POST['old'])){
+      if (isset($_POST['card'])){
+        $cardno = $_POST['card'];
+        $sql = "SELECT * FROM PAYMENT_INFO WHERE Card_No = '$cardno';";
+        $result = mysqli_query($db, $sql);
+        $row = mysqli_fetch_array($result);
+        $cardname = $row['Name_On_Card'];
+        $cvv = $row['CVV'];
+        $exp_date = $row['Expiration_Date'];
+        $sql1 = "INSERT INTO ORDER_ITEM VALUES('$oid', '$date', '$senior_tickets', '$child_tickets', '$adult_tickets', '$total_tickets', '$time', 'unused', '$cardno', '$uname', '$movie_name', '$tid');";
+        mysqli_query($db, $sql1);
+        $_SESSION['oid'] = $oid;
+        header("location: confirmation.php");
+      }
+    }
   }
 ?>
 
@@ -95,7 +118,7 @@
       <tr><td style='font-size: 20px; padding: 10px;'><?php echo $tinfo["Name"]."<br>".$tinfo["Theater_Street"]. ", ".$tinfo["Theater_City"].", ".$tinfo["Theater_State"]. ", " . $tinfo["Theater_ZIP"] ; ?></td></tr>
     <table>
     <div class="wrapper">
-      <form name="saved" action="" method="POST">
+      <form action="" method="POST">
         <h1>Payment Information</h1>
         <label>Use a saved card: </label>
         <select name="card">
@@ -103,20 +126,24 @@
             <option value="<?php echo $row['Card_No']; ?>"><?php echo $row['Card_No'];?></option>
           <?php endwhile ?>
         </select>
-        <input type="submit" class="btn btn-primary" value="Buy Ticket">
+        <input type="submit" name='old' class="btn btn-primary" value="Buy Ticket">
       </form>
-      <form name="new" action="" method="POST"> 
+      <form action="" method="POST"> 
         <h2>Use a new card</h2>
         <label>Name on Card: </label>
         <input type="text" name="card_name" class="form-control">
+        <span class="help-block" style="color: red;"><?php echo $cname_err; ?></span>
         <label>Card Number: </label>
         <input type="text" name="card_no" class="form-control">
+        <span class="help-block" style="color: red;"><?php echo $cnum_err; ?></span>
         <label>CVV: </label>
         <input type="text" name="cvv" class="form-control">
+        <span class="help-block" style="color: red;"><?php echo $cvv_err; ?></span>
         <label>Expiration Date: </label>
         <input type="text" name="exp_date" class="form-control"><br>
-        <input type="checkbox" name="saved" value="yes"> Save this Card for Later Use<br><br>
-        <input type="submit" class="btn btn-primary" value="Submit">
+        <span class="help-block" style="color: red;"><?php echo $exp_err; ?></span>
+        <input type="checkbox" name="save" value="yes"> Save this Card for Later Use<br><br>
+        <input type="submit" name="new" class="btn btn-primary" value="Submit">
       </form>
     </div>
 </body>

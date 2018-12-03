@@ -19,7 +19,11 @@
 
   if (isset($_POST['rating'])){
     $name = $_POST['rating'];
-    echo "<script type='text/javascript'>alert('$name');</script>";
+    $sql = "SELECT Theater_ID FROM THEATER WHERE Name = '$name';";
+    $result = mysqli_query($db, $sql);
+    $row = mysqli_fetch_array($result);
+    $_SESSION['tid'] = $row['Theater_ID'];
+    header("location: select_time.php");
   }
 
   if (isset($_POST['searchval'])){
@@ -43,16 +47,16 @@
         <h1><b>Choose Theater</b></h1>
     </div>
     <form name="choose" action="" method="POST">
-      <label>Saved Theater</label>
+      <label>Saved Theater: </label>
       <select name="rating">
         <?php while ($row = mysqli_fetch_array($result)) : ?>
           <option value="<?php echo $row['Name']; ?>"><?php echo $row['Name'];?></option>
         <?php endwhile ?>
       </select>
       <input type="submit" class="btn btn-primary" value="Choose">
-    </form>
+    </form><br>
     <form name="card" action="" method="POST">
-      <input name="searchval" style='margin: auto; width: 75%;' type="text" class="form-control" placeholder="City/State/Theater"><br>
+      <input name="searchval" style='margin: auto; width: 50%;' type="text" class="form-control" placeholder="Search by City/State/Theater"><br>
       <a class="btn btn-danger" href="movie.php">Back</a>
       <input type="submit" class="btn btn-primary" value="Search">
     </form>

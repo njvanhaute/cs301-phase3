@@ -15,11 +15,13 @@
   $result = mysqli_query($db, $sql);
 
   if (isset($_POST['time'])){
-    if (isset($_POST['date'])){
+    $date = date("m-d-Y", strtotime($_POST['date']));
+    if ($date != '01-01-1970'){
       $_SESSION['time'] = $_POST['time'];
       $_SESSION['date'] = $_POST['date'];
       header("location: num_tickets.php");
     }
+    else {$date_err = 'You must select a date.';}
   }
 ?>
 
@@ -40,6 +42,7 @@
     <form name="choose" action="" method="POST">
       <label>Choose a date: </label>
       <input type="date" name="date"><br>
+      <span class="help-block" style="color: red;"><?php echo $date_err; ?></span>
       <table style='margin: auto; width: 75%;' class='table-bordered'>
         <tr>
           <th style='font-size: 20px; padding: 10px; text-align: center;'>Showtime</th>
