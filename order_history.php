@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
+        th {background-color: #f1f1f1;}
     </style>
     <script>
       function myFunction() {
@@ -56,11 +57,11 @@
       <input style='margin: auto; width: 75%;' type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search for Order ID..."><br>
       <table style='margin: auto; width: 75%;' class='table-bordered' id="myTable">
       <tr class="header">
-        <td style='font-size: 20px; padding: 10px;'><strong>Select</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Order ID</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Movie</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Status</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Total Cost</strong></th>
+        <th style='font-size: 20px; padding: 10px;'>Select</th>
+        <th style='font-size: 20px; padding: 10px;'>Order ID</th>
+        <th style='font-size: 20px; padding: 10px;'>Title</th>
+        <th style='font-size: 20px; padding: 10px;'>Status</th>
+        <th style='font-size: 20px; padding: 10px;'>Total Cost</th>
       </tr>
       <?php 
         $dsql = "SELECT Child_discount, Senior_discount FROM SYSTEM_INFO;";

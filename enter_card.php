@@ -108,7 +108,6 @@
 </head>
 <body>
     <div class="page-header">
-        <a href="me.php"><img src="images/me_icon.png" width="75px" style="top:15px; left: 15px; position: absolute;"></a>
         <h1><b>Enter Card</b></h1>
     </div>
     <table style='margin: auto; width: 75%;' class='table-bordered'>
@@ -125,7 +124,7 @@
           <?php while ($row = mysqli_fetch_array($result3)) : ?>
             <option value="<?php echo $row['Card_No']; ?>"><?php echo $row['Card_No'];?></option>
           <?php endwhile ?>
-        </select>
+        </select><br><br>
         <input type="submit" name='old' class="btn btn-primary" value="Buy Ticket">
       </form>
       <form action="" method="POST"> 

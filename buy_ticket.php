@@ -54,7 +54,8 @@
         <?php endwhile ?>
       </select>
       <input type="submit" class="btn btn-primary" value="Choose">
-    </form><br>
+    </form>
+    <h2>-- OR --</h2><br>
     <form name="card" action="" method="POST">
       <input name="searchval" style='margin: auto; width: 50%;' type="text" class="form-control" placeholder="Search by City/State/Theater"><br>
       <a class="btn btn-danger" href="movie.php">Back</a>

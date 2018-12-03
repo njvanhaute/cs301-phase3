@@ -98,7 +98,7 @@
       <h1><b><?php echo $movie_title ?></b></h1>
   </div>
   <div class="wrapper">
-    <h3>Give Review:</h3>
+    <h2>Give Review:</h2>
     <form action="" method="POST">
       <label>Rating</label>
       <select name="rating">

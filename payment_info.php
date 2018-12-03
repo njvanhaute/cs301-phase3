@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
+        th {background-color: #f1f1f1;}
     </style>
 </head>
 <body>
@@ -34,10 +35,10 @@
     <form name="card" action="" method="POST">
       <table style='margin: auto; width: 75%;' class='table-bordered'>
       <tr>
-        <td style='font-size: 20px; padding: 10px;'><strong>Select</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Card Number</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Name on Card</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Exp Date</strong></th>
+        <th style='font-size: 20px; padding: 10px;'>Select</th>
+        <th style='font-size: 20px; padding: 10px;'>Card Number</th>
+        <th style='font-size: 20px; padding: 10px;'>Name on Card</th>
+        <th style='font-size: 20px; padding: 10px;'>Exp Date</th>
       </tr>
       <?php 
         $uname = $_SESSION["username"];

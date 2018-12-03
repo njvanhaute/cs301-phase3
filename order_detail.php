@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
+        th {background-color: #f1f1f1;}
     </style>
 </head>
 <body>
@@ -43,13 +44,13 @@
     <form name="card" action="" method="POST">
       <table style='margin: auto; width: 75%;' class='table-bordered'>
       <tr>
-        <td style='font-size: 20px; padding: 10px;'><strong>Movie</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Order Date</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Order Time</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Theater Name</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Adult Tickets</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Child Tickets</strong></th>
-        <td style='font-size: 20px; padding: 10px;'><strong>Senior Tickets</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Movie</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Order Date</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Order Time</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Theater Name</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Adult Tickets</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Child Tickets</strong></th>
+        <th style='font-size: 20px; padding: 10px;'><strong>Senior Tickets</strong></th>
       </tr>
       <?php 
         $order_id = $_SESSION['oid'];
