@@ -15,7 +15,7 @@
   $senior_cost = 9.23;
   $child_cost = 8.08;
 
-  $top_sellers_sql = "SELECT TOP 3 NUM_TOTAL_TICKETS FROM ORDER_ITEM;"; 
+  $top_sellers_sql = "SELECT * FROM ORDER_ITEM GROUP BY NUM_TOTAL_TICKETS;"; 
   $result = mysqli_query($db, $top_sellers_sql);
   $months = [];
   $row = mysqli_fetch_assoc($result);
