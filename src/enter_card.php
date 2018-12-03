@@ -1,6 +1,7 @@
 <?php
   // Initialize the session
   include("config.php");
+  header('Content-Type: text/html; charset=iso-8859-1');
   session_start();
   // Check if the user is logged in, if not then redirect him to login page
   if(empty($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){

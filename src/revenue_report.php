@@ -3,6 +3,7 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
   include("config.php");
+  header('Content-Type: text/html; charset=iso-8859-1');
   session_start();
   // Check if the user is logged in, if not then redirect him to login page
   if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
