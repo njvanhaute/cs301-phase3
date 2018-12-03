@@ -11,7 +11,7 @@
   }
 
 
-  $revenue_sql = "SELECT LEFT(ORDER_DATE, 2) AS MONTH_NO, 9.23 * SUM(Num_Senior_Tickets) AS SENIOR_REV, 8.08 * SUM(Num_Child_Tickets) AS CHILD_REV, 11.54 * SUM(Num_Adult_Tickets) AS ADULT_REV FROM ORDER_ITEM WHERE ORDER_STATUS = \"completed\" GROUP BY MONTH_NO;"; 
+  $revenue_sql = "SELECT LEFT(ORDER_DATE, 2) AS MONTH_NO, 9.23 * SUM(Num_Senior_Tickets) AS SENIOR_REV, 8.08 * SUM(Num_Child_Tickets) AS CHILD_REV, 11.54 * SUM(Num_Adult_Tickets) AS ADULT_REV FROM ORDER_ITEM WHERE ORDER_STATUS <> \"cancelled\" GROUP BY MONTH_NO;"; 
   $result = mysqli_query($db, $revenue_sql);
   $row = mysqli_fetch_assoc($result);
   $rev_info = [];
