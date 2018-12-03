@@ -27,6 +27,7 @@
   $row2 = mysqli_fetch_array($result2);
   $senior_discount = 1 - $row2['Senior_discount'];
   $child_discount = 1 - $row2['Child_discount'];
+  $ticket_err = "";
 
   if (isset($_POST['adult_tickets'])){
     $total = $_POST['adult_tickets'] + $_POST['senior_tickets'] + $_POST['child_tickets'];
@@ -106,8 +107,8 @@
       </select><br>
       <span class="help-block" style="color: red;"><?php echo $ticket_err; ?></span>
       <div class="form-group">
-        <a class="btn btn-danger" href="select_time.php" style="width: 150px; font-size: 20px;">Back</a>
-        <input type="submit" class="btn btn-primary" value="Next" style="width: 150px; font-size: 20px;">
+        <a class="btn btn-danger" href="select_time.php" style="">Back</a>
+        <input type="submit" class="btn btn-primary" value="Next">
       </div>
     </form>
 </body>

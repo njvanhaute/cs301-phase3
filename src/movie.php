@@ -13,7 +13,6 @@
     $_SESSION['title'] = $_POST['title'];
     $movie_title = $_POST['title'];
   }
-
   else {
     $movie_title = $_SESSION['title'];
   }

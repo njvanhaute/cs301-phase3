@@ -8,14 +8,7 @@
       exit;
   }
 
-  if ($_POST['title']){
-    $_SESSION['title'] = $_POST['title'];
-    $movie_title = $_POST['title'];
-  }
-
-  else {
-    $movie_title = $_SESSION['title'];
-  }
+  $movie_title = $_SESSION['title'];
 
   $sql_avg = "SELECT AVG(Rating) AS average FROM REVIEW WHERE Title = '$movie_title';";
   $result_avg = mysqli_query($db, $sql_avg);
