@@ -2,6 +2,7 @@
   // Initialize the session
   include("config.php");
   session_start();
+
   // Check if the user is logged in, if not then redirect him to login page
   if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       header("location: login.php");
@@ -29,7 +30,9 @@
   $result_avg = mysqli_query($db, $sql_avg);
   $row_avg = mysqli_fetch_assoc($result_avg);
   $movie_avg = $row_avg['average'];
-  
+ 
+  $img = "";
+ 
   if ($movie_title == 'Beautiful Boy'){
     $img = '../images/beautiful_boy.jpg';
   }
