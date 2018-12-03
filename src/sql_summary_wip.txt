@@ -1,0 +1,63 @@
+Overview.php
+
+    SELECT Synopsis, Movie_Cast FROM MOVIE WHERE Title = '$movie_title';
+
+Payment_info.php
+
+    # Using a saved card:
+    SELECT Card_No, Name_On_Card, Expiration_Date FROM PAYMENT_INFO WHERE username = '$uname' AND Saved = 1;
+
+    
+Pop_movie_report.php
+
+    select Title, MONTH_NO, SUMTOT from (
+        select Title, MONTH_NO, SUMTOT, 
+            (@rn:=if(@prev = MONTH_NO, @rn +1, 1)) as rownumb, 
+            @prev:= MONTH_NO from ( 
+                select Title, MONTH_NO, COUNT(*) AS SUMTOT 
+                from ORDER_ITEM_W_MONTH 
+                where Order_Status <> "cancelled" 
+                GROUP BY Title, MONTH_NO 
+                order by MONTH_NO, SUMTOT desc, Title
+            ) 
+            as sortedlist JOIN (select @prev:=NULL, @rn :=0) as vars
+    ) as groupedlist where rownumb<=3 
+    order by MONTH_NO, SUMTOT desc, Title;
+
+Pref_theater.php
+
+    SELECT Theater_ID, Name, Theater_State, Theater_City, Theater_Street, Theater_Zip FROM THEATER NATURAL JOIN PREFERS WHERE username = '$uname';
+
+Register.php
+
+    # Checking if usernames or emails are stored in DB already
+    # The question marks are replaced with parameters
+    SELECT Username FROM CUSTOMER WHERE Username = ?;
+    SELECT Email FROM CUSTOMER WHERE Email = ?;
+
+    # Validating manager password
+    SELECT Manager_password FROM SYSTEM_INFO WHERE Manager_password = ?;
+
+    # After validation, inserting new user info into DB
+    INSERT INTO CUSTOMER (Username, Email, Password_Customer) VALUES (?, ?, ?);
+    INSERT INTO MANAGER (Username, Email, Password_Manager) VALUES (?, ?, ?);
+
+Revenue_report.php
+
+    SELECT LEFT(ORDER_DATE, 2) AS MONTH_NO, 9.23 * SUM(Num_Senior_Tickets) AS SENIOR_REV, 8.08 * SUM(Num_Child_Tickets) AS CHILD_REV, 11.54 * SUM(Num_Adult_Tickets) AS ADULT_REV FROM ORDER_ITEM WHERE ORDER_STATUS <> "cancelled" GROUP BY MONTH_NO;
+
+Review.php
+
+    SELECT AVG(Rating) AS average FROM REVIEW WHERE Title = '$movie_title';
+    SELECT Rating, Comments FROM REVIEW WHERE Title = '$movie_title';
+
+Search_result.php
+
+    SELECT * FROM THEATER WHERE Name LIKE '%$search_value%' OR Theater_City LIKE '%$search_value%' OR Theater_State LIKE '%$search_value%';
+    INSERT INTO PREFERS VALUES('$tid', '$uname');
+
+Select_time.php
+
+    SELECT Showtime FROM SHOWTIME NATURAL JOIN THEATER WHERE Theater_ID = '$tid' AND Title = '$movie_name';
+
+
